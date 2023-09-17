@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+// На вход подается число n.
+// Написать скрипт в любой парадигме, который выводит на экран таблицу умножения всех чисел от 1 до n.
+// Обоснуйте выбор парадигм.
+function multTab(n) {
+    for (i=1; i <= n; i++) {
+        for (j=1; j <= 9; j++) {
+            console.log(`${i} * ${j} = ${i * j}`);
+        }
+        console.log('\n');
+  }
+}
+multTab(1);
+
+    </script>
+</body>
+</html> 
+<!-- Обоснование выбора:
+     Процедурная парадигма обеспечивает мобильность кода, гибкость и возможность повторного использования.>
