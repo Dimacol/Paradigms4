@@ -7,21 +7,29 @@
 </head>
 <body>
     <script>
-// На вход подается число n.
-// Написать скрипт в любой парадигме, который выводит на экран таблицу умножения всех чисел от 1 до n.
-// Обоснуйте выбор парадигм.
-function multTab(n) {
-    for (i=1; i <= n; i++) {
-        for (j=1; j <= 9; j++) {
-            console.log(`${i} * ${j} = ${i * j}`);
-        }
-        console.log('\n');
-  }
-}
-multTab(1);
-
+//Расчет корреляции Пирсона между двумя массивами
+const pcorr = (x, y) => {
+  let sumX = 0, //сумма знач.всех признаков
+    sumY = 0,
+    sumXY = 0,
+    sumX2 = 0,
+    sumY2 = 0;
+  const minLength = x.length = y.length = Math.min(x.length, y.length),
+    reduce = (xi, idx) => {
+      const yi = y[idx]; //сумма произведений знач.всех признаков
+      sumX += xi;
+      sumY += yi;
+      sumXY += xi * yi;
+      sumX2 += xi * xi;// # сумма квадратов знач.всех признаков
+      sumY2 += yi * yi;
+    }
+  x.forEach(reduce);
+  return (minLength * sumXY - sumX * sumY) / Math.sqrt((minLength * sumX2 - sumX * sumX) * (minLength * sumY2 - sumY * sumY));
+};
+let arrX = [10, 20, 30, 40, 50];
+let arrY = [20, 40, 50, 70, 80];
+let R = pcorr(arrX, arrY); //Коэффициент корреляции Пирсона диапазон значений результата от -1 до 1
+console.log('arrX', arrX, 'arrY', arrY, 'R', R);// Ответ: 0.993
     </script>
 </body>
 </html> 
-<!-- Обоснование выбора:
-     Процедурная парадигма обеспечивает мобильность кода, гибкость и возможность повторного использования.>
